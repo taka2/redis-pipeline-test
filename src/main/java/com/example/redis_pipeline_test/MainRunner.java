@@ -136,7 +136,7 @@ public class MainRunner implements ApplicationRunner {
         for(int r=0; r<TRY_COUNT; r++) {
             long startTime = System.currentTimeMillis();
 
-            Stream.iterate(0, i->i).limit(recordCount).parallel().forEach(i -> {
+            Stream.iterate(0, i->i+1).limit(recordCount).parallel().forEach(i -> {
                 redisTemplate.opsForValue().set("key" + i, "value" + i);
             });
 
